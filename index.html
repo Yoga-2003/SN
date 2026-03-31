@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siragadipom Nanga | Official Team Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a192f; }
+        ::-webkit-scrollbar-thumb { background: #ec4899; border-radius: 4px; }
+
+        /* Animation for the "Snitch" or Golden Bird */
+        .snitch { position: fixed; pointer-events: none; z-index: 1000; font-size: 1.5rem; display: flex; align-items: center; opacity: 0; transition: opacity 0.5s ease; }
+        .snitch-body { color: #fbbf24; filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.9)); }
+        .wing { color: #e2e8f0; font-size: 1rem; animation: flap 0.1s infinite alternate ease-in-out; opacity: 0.8; }
+        @keyframes flap { 0% { transform: translateY(-2px) rotate(-10deg); } 100% { transform: translateY(2px) rotate(10deg); } }
+
+        /* Card Flip Mechanics */
+        .flip-inner { transform-style: preserve-3d; transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+        .flipped .flip-inner { transform: rotateY(180deg); }
+        .flip-front, .flip-back { backface-visibility: hidden; -webkit-backface-visibility: hidden; position: absolute; inset: 0; }
+        .flip-back { transform: rotateY(180deg); }
+    </style>
+</head>
+<body class="bg-[#051120] text-slate-100 font-sans overflow-x-hidden">
+
+    <div id="snitch-container"></div>
+
+    <nav id="mySidebar" class="fixed top-0 left-[-280px] w-[280px] h-full bg-[#0a192f]/95 backdrop-blur-xl border-r border-slate-800 z-50 transition-all duration-300 shadow-2xl flex flex-col pt-16">
+        <a href="javascript:void(0)" class="absolute top-4 right-6 text-4xl text-slate-400 hover:text-pink-500 transition-colors" onclick="closeNav()">&times;</a>
+        <div class="text-center mb-8 px-4">
+            <img src="Assests/team_logo.jpeg" alt="Logo" class="w-20 h-20 mx-auto rounded-full border-2 border-pink-500 shadow-[0_0_15px_rgba(236,72,153,0.4)] object-cover">
+        </div>
+        <hr class="border-slate-800 w-3/4 mx-auto mb-6">
+        <div class="flex flex-col gap-2 px-6">
+            <a href="#home" onclick="closeNav()" class="px-4 py-3 text-lg font-medium text-slate-300 rounded-lg hover:text-pink-400 hover:bg-[#112240]">Home</a>
+            <a href="#field-notes" onclick="closeNav()" class="px-4 py-3 text-lg font-medium text-slate-300 rounded-lg hover:text-pink-400 hover:bg-[#112240]">Field Notes</a>
+            <a href="#squad" onclick="closeNav()" class="px-4 py-3 text-lg font-medium text-slate-300 rounded-lg hover:text-pink-400 hover:bg-[#112240]">Our Squad</a>
+            <a href="#updates" onclick="closeNav()" class="px-4 py-3 text-lg font-medium text-slate-300 rounded-lg hover:text-pink-400 hover:bg-[#112240]">Updates</a>
+        </div>
+    </nav>
+
+    <div id="overlay" onclick="closeNav()" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+    <div id="main" class="transition-all duration-300">
+        
+        <button class="fixed top-6 left-6 z-30 bg-[#0a192f]/90 backdrop-blur-md px-5 py-2.5 rounded-full text-pink-500 border border-pink-900/50 hover:shadow-[0_0_20px_rgba(236,72,153,0.3)] transition-all flex items-center gap-2 font-bold tracking-wider text-sm" onclick="openNav()">
+            <span class="text-xl">&#9776;</span> MENU
+        </button>
+
+        <header id="home" class="min-h-screen flex flex-col items-center justify-center relative bg-[url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?q=80&w=2000&auto=format&fit=crop')] bg-cover bg-center bg-fixed">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#051120]/60 via-[#051120]/80 to-[#051120]"></div>
+            <div class="relative z-10 flex flex-col items-center px-4">
+                <img src="Assests/team_logo.jpeg" alt="Logo" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-pink-500 shadow-[0_0_50px_rgba(236,72,153,0.6)] object-cover mb-8">
+                <h1 class="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-pink-400 to-blue-300 text-center leading-tight uppercase">
+                    Siragadipom Nanga
+                </h1>
+                <p class="text-2xl md:text-4xl text-pink-100 font-extralight tracking-[0.25em] uppercase mt-2">Wings of Victory</p>
+                <a href="#squad" class="mt-16 px-10 py-4 rounded-full bg-pink-600 text-white font-extrabold tracking-widest hover:bg-pink-500 hover:shadow-[0_0_30px_rgba(236,72,153,0.6)] transition-all">MEET THE SQUAD</a>
+            </div>
+        </header>
+
+        <section id="field-notes" class="py-24 px-6 bg-[#051120] relative">
+            <div class="max-w-7xl mx-auto relative z-10">
+                <div class="mb-16">
+                    <h2 class="text-3xl md:text-4xl font-black tracking-tighter text-white uppercase">Field <span class="text-pink-500">Notes</span></h2>
+                    <div class="h-1 w-20 bg-pink-600 mt-2"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-[#0a192f] p-8 rounded-2xl border-l-4 border-pink-500 shadow-xl hover:bg-[#112240] transition-colors">
+                        <div class="flex items-center gap-2 mb-4 text-xs font-bold text-slate-500 tracking-widest uppercase"><span>Mar 28, 2026</span> <span class="text-pink-500">•</span> <span>Training</span></div>
+                        <p class="text-slate-300 leading-relaxed italic">"Champions aren't made in the bright lights, but in the early morning fog. Today’s conditioning was brutal, but the squad didn't break."</p>
+                    </div>
+                    <div class="bg-[#0a192f] p-8 rounded-2xl border-l-4 border-pink-500 shadow-xl hover:bg-[#112240] transition-colors">
+                        <div class="flex items-center gap-2 mb-4 text-xs font-bold text-slate-500 tracking-widest uppercase"><span>Mar 30, 2026</span> <span class="text-pink-500">•</span> <span>Tactics</span></div>
+                        <p class="text-slate-300 leading-relaxed italic">"Precision beats power every time. Our blueprint for the season opener is locked. Time to execute with clinical efficiency."</p>
+                    </div>
+                    <div class="bg-[#0a192f] p-8 rounded-2xl border-l-4 border-pink-500 shadow-xl hover:bg-[#112240] transition-colors">
+                        <div class="flex items-center gap-2 mb-4 text-xs font-bold text-slate-500 tracking-widest uppercase"><span>Apr 01, 2026</span> <span class="text-pink-500">•</span> <span>Unity</span></div>
+                        <p class="text-slate-300 leading-relaxed italic">"Beyond skill and stats, it’s this brotherhood that wins trophies. One heart, one soul, one team. We are ready to take flight."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="squad" class="py-28 px-6 bg-[#0a192f] border-t border-b border-slate-800/50">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col items-center mb-20 text-center">
+                    <h2 class="text-4xl md:text-5xl font-black tracking-widest text-white uppercase">Player Spotlights</h2>
+                    <p class="text-pink-500 font-bold mt-4 tracking-[0.3em]">THE WINGS OF OUR TEAM</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                    
+                    <div class="flex flex-col gap-4 group">
+                        <div class="flex items-center gap-3 px-2">
+                            <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center font-bold">C</div>
+                            
+                        </div>
+                        <div class="flip-card h-[420px] w-full cursor-pointer [perspective:1500px]" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner relative w-full h-full">
+                                <div class="flip-front bg-[#112240] rounded-2xl border border-slate-700/50 flex flex-col items-center justify-center">
+                                    <div class="text-8xl mb-6">⚡</div>
+                                    <h3 class="text-3xl font-black text-white uppercase">REENA RAI</h3>
+                                    <div class="mt-4 text-pink-400 text-xs font-bold tracking-widest bg-pink-950/40 px-5 py-1.5 rounded-full uppercase">Leader</div>
+                                </div>
+                                <div class="flip-back bg-pink-600 rounded-2xl flex flex-col items-center justify-center p-10">
+                                    <h4 class="text-xl font-bold text-white mb-6 border-b border-white/20 pb-2 w-full">STATS</h4>
+                                    <div class="w-full space-y-4">
+                                        <div class="flex justify-between bg-black/20 p-3 rounded-lg"><span>Leadership</span><span>100</span></div>
+                                        <div class="flex justify-between bg-black/20 p-3 rounded-lg"><span>Tactics</span><span>98</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 group">
+                        <div class="flex items-center gap-3 px-2">
+                            <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center font-bold">VC</div>
+                           
+                        </div>
+                        <div class="flip-card h-[420px] w-full cursor-pointer [perspective:1500px]" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner relative w-full h-full">
+                                <div class="flip-front bg-[#112240] rounded-2xl border border-slate-700/50 flex flex-col items-center justify-center">
+                                    <div class="text-8xl mb-6">🥈</div>
+                                    <h3 class="text-3xl font-black text-white uppercase">KOKILA</h3>
+                                    <div class="mt-4 text-pink-400 text-xs font-bold tracking-widest bg-pink-950/40 px-5 py-1.5 rounded-full uppercase">Strategist</div>
+                                </div>
+                                <div class="flip-back bg-pink-600 rounded-2xl flex flex-col items-center justify-center p-10">
+                                    <h4 class="text-xl font-bold text-white mb-6 border-b border-white/20 pb-2 w-full">STATS</h4>
+                                    <div class="w-full space-y-4">
+                                        <div class="flex justify-between bg-black/20 p-3 rounded-lg"><span>Support</span><span>95</span></div>
+                                        <div class="flex justify-between bg-black/20 p-3 rounded-lg"><span>Consistency</span><span>92</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 group">
+                        <div class="flex items-center gap-3 px-2">
+                            <div class="w-10 h-10 rounded-full bg-pink-900 flex items-center justify-center font-bold">WK</div>
+                            
+                        </div>
+                        <div class="flip-card h-[420px] w-full cursor-pointer [perspective:1500px]" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner relative w-full h-full">
+                                <div class="flip-front bg-[#112240] rounded-2xl border border-slate-700/50 flex flex-col items-center justify-center">
+                                    <div class="text-8xl mb-6">🧤</div>
+                                    <h3 class="text-2xl font-black text-white uppercase">YOGADHARSHINII</h3>
+                                    <div class="mt-4 text-pink-400 text-xs font-bold tracking-widest bg-pink-950/40 px-5 py-1.5 rounded-full uppercase">Reflexes</div>
+                                </div>
+                                <div class="flip-back bg-pink-600 rounded-2xl flex flex-col items-center justify-center p-10">
+                                    <h4 class="text-xl font-bold text-white mb-6 border-b border-white/20 pb-2 w-full">STATS</h4>
+                                    <div class="w-full space-y-4">
+                                        <div class="flex justify-between bg-black/20 p-3 rounded-lg"><span>Reflex</span><span>99</span></div>
+                                        <div class="flex justify-between bg-black/20 p-3 rounded-lg"><span>Agility</span><span>97</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 group">
+                        <div class="flex items-center gap-3 px-2 transition-transform duration-300 group-hover:translate-x-2">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-orange-600 flex items-center justify-center font-bold shadow-[0_0_15px_rgba(239,68,68,0.4)]">PH</div>
+                           
+                        </div>
+                        <div class="flip-card h-[420px] w-full cursor-pointer [perspective:1500px]" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner relative w-full h-full">
+                                <div class="flip-front bg-[#0d1b33] rounded-2xl border border-slate-700/50 overflow-hidden flex flex-col items-center justify-center">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-red-900/20 to-transparent opacity-50"></div>
+                                    <div class="relative text-8xl mb-6 drop-shadow-[0_0_20px_rgba(239,68,68,0.6)]">💥</div>
+                                    <h3 class="relative text-3xl font-black text-white tracking-tighter uppercase">ANANYA</h3>
+                                    <div class="relative mt-4 text-red-400 text-xs font-black tracking-[0.2em] bg-red-950/30 border border-red-900/50 px-5 py-1.5 rounded-full uppercase">Striker</div>
+                                </div>
+                                <div class="flip-back bg-gradient-to-br from-pink-600 to-red-700 rounded-2xl flex flex-col items-center justify-center p-8 shadow-2xl">
+                                    <h4 class="text-xl font-black text-white mb-8 tracking-widest border-b-2 border-white/20 w-full text-center pb-2">METRICS</h4>
+                                    <div class="w-full space-y-6">
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between text-xs font-bold text-white/80 uppercase"><span>Impact</span><span>98%</span></div>
+                                            <div class="w-full bg-black/30 h-2 rounded-full overflow-hidden"><div class="bg-white h-full" style="width: 98%"></div></div>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between text-xs font-bold text-white/80 uppercase"><span>Strength</span><span>94%</span></div>
+                                            <div class="w-full bg-black/30 h-2 rounded-full overflow-hidden"><div class="bg-white h-full" style="width: 94%"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 group">
+                        <div class="flex items-center gap-3 px-2 transition-transform duration-300 group-hover:translate-x-2">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-cyan-600 flex items-center justify-center font-bold shadow-[0_0_15px_rgba(59,130,246,0.4)]">SP</div>
+                           
+                        </div>
+                        <div class="flip-card h-[420px] w-full cursor-pointer [perspective:1500px]" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner relative w-full h-full">
+                                <div class="flip-front bg-[#0d1b33] rounded-2xl border border-slate-700/50 overflow-hidden flex flex-col items-center justify-center">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-blue-900/20 to-transparent opacity-50"></div>
+                                    <div class="relative text-8xl mb-6 drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]">🏃‍♀️</div>
+                                    <h3 class="relative text-3xl font-black text-white tracking-tighter uppercase">SWETHA</h3>
+                                    <div class="relative mt-4 text-blue-400 text-xs font-black tracking-[0.2em] bg-blue-950/30 border border-blue-900/50 px-5 py-1.5 rounded-full uppercase">Speedster</div>
+                                </div>
+                                <div class="flip-back bg-gradient-to-br from-pink-600 to-blue-700 rounded-2xl flex flex-col items-center justify-center p-8 shadow-2xl">
+                                    <h4 class="text-xl font-black text-white mb-8 tracking-widest border-b-2 border-white/20 w-full text-center pb-2">METRICS</h4>
+                                    <div class="w-full space-y-6">
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between text-xs font-bold text-white/80 uppercase"><span>Velocity</span><span>99%</span></div>
+                                            <div class="w-full bg-black/30 h-2 rounded-full overflow-hidden"><div class="bg-white h-full" style="width: 99%"></div></div>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between text-xs font-bold text-white/80 uppercase"><span>Stamina</span><span>91%</span></div>
+                                            <div class="w-full bg-black/30 h-2 rounded-full overflow-hidden"><div class="bg-white h-full" style="width: 91%"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 group">
+                        <div class="flex items-center gap-3 px-2 transition-transform duration-300 group-hover:translate-x-2">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-teal-600 flex items-center justify-center font-bold shadow-[0_0_15px_rgba(16,185,129,0.4)]">DF</div>
+                           
+                        </div>
+                        <div class="flip-card h-[420px] w-full cursor-pointer [perspective:1500px]" onclick="this.classList.toggle('flipped')">
+                            <div class="flip-inner relative w-full h-full">
+                                <div class="flip-front bg-[#0d1b33] rounded-2xl border border-slate-700/50 overflow-hidden flex flex-col items-center justify-center">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-emerald-900/20 to-transparent opacity-50"></div>
+                                    <div class="relative text-8xl mb-6 drop-shadow-[0_0_20px_rgba(16,185,129,0.6)]">🛡️</div>
+                                    <h3 class="relative text-3xl font-black text-white tracking-tighter uppercase">ARYASREE</h3>
+                                    <div class="relative mt-4 text-emerald-400 text-xs font-black tracking-[0.2em] bg-emerald-950/30 border border-emerald-900/50 px-5 py-1.5 rounded-full uppercase">The Wall</div>
+                                </div>
+                                <div class="flip-back bg-gradient-to-br from-pink-600 to-emerald-700 rounded-2xl flex flex-col items-center justify-center p-8 shadow-2xl">
+                                    <h4 class="text-xl font-black text-white mb-8 tracking-widest border-b-2 border-white/20 w-full text-center pb-2">METRICS</h4>
+                                    <div class="w-full space-y-6">
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between text-xs font-bold text-white/80 uppercase"><span>Defense</span><span>97%</span></div>
+                                            <div class="w-full bg-black/30 h-2 rounded-full overflow-hidden"><div class="bg-white h-full" style="width: 97%"></div></div>
+                                        </div>
+                                        <div class="space-y-2">
+                                            <div class="flex justify-between text-xs font-bold text-white/80 uppercase"><span>Focus</span><span>95%</span></div>
+                                            <div class="w-full bg-black/30 h-2 rounded-full overflow-hidden"><div class="bg-white h-full" style="width: 95%"></div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="updates" class="py-28 px-6 max-w-7xl mx-auto">
+            <div class="flex items-center justify-center gap-5 mb-20">
+                <div class="h-[1px] w-20 bg-pink-800"></div>
+                <h2 class="text-4xl md:text-5xl font-black tracking-widest text-white text-center uppercase">Latest Updates</h2>
+                <div class="h-[1px] w-20 bg-pink-800"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-[#0a192f] rounded-3xl overflow-hidden border border-slate-800/50 group hover:border-pink-900/50 transition-all">
+                    <div class="h-56 bg-pink-900/10 flex items-center justify-center text-6xl">🏆</div>
+                    <div class="p-8">
+                        <span class="text-pink-500 text-xs font-bold uppercase tracking-widest">Tournament</span>
+                        <h3 class="text-2xl font-bold text-white mt-2">Season Opener</h3>
+                        <p class="text-slate-400 mt-4 font-light italic">"We officially take flight on the 15th. Preparation is at its peak."</p>
+                    </div>
+                </div>
+                <div class="bg-[#0a192f] rounded-3xl overflow-hidden border border-slate-800/50 group hover:border-pink-900/50 transition-all">
+                    <div class="h-56 bg-blue-900/10 flex items-center justify-center text-6xl">👕</div>
+                    <div class="p-8">
+                        <span class="text-pink-500 text-xs font-bold uppercase tracking-widest">Style</span>
+                        <h3 class="text-2xl font-bold text-white mt-2">Kit Reveal</h3>
+                        <p class="text-slate-400 mt-4 font-light italic">"Behold our 2026 Navy-Pink armor. Designed for the agile."</p>
+                    </div>
+                </div>
+                <div class="bg-[#0a192f] rounded-3xl overflow-hidden border border-slate-800/50 group hover:border-pink-900/50 transition-all">
+                    <div class="h-56 bg-slate-800/10 flex items-center justify-center text-6xl">🤝</div>
+                    <div class="p-8">
+                        <span class="text-pink-500 text-xs font-bold uppercase tracking-widest">Community</span>
+                        <h3 class="text-2xl font-bold text-white mt-2">Fan Meet</h3>
+                        <p class="text-slate-400 mt-4 font-light italic">"Saturday at the Arena. Come meet the wings behind the flight."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-[#030a14] py-12 border-t border-slate-800 text-center">
+            <img src="Assests/team_logo.jpeg" alt="SN" class="w-12 h-12 mx-auto rounded-full border border-pink-600 mb-6 object-cover">
+            <p class="text-slate-600 text-sm tracking-widest uppercase">&copy; 2026 Siragadipom Nanga. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Navigation Logic
+        const sidebar = document.getElementById("mySidebar");
+        const overlay = document.getElementById("overlay");
+        function openNav() {
+            sidebar.style.left = "0";
+            overlay.classList.remove("hidden");
+            setTimeout(() => { overlay.classList.remove("opacity-0"); overlay.classList.add("opacity-100"); }, 10);
+        }
+        function closeNav() {
+            sidebar.style.left = "-280px";
+            overlay.classList.remove("opacity-100");
+            overlay.classList.add("opacity-0");
+            setTimeout(() => { overlay.classList.add("hidden"); }, 300);
+        }
+
+        // Animated Golden Bird (Snitch) Effect
+        window.addEventListener('load', () => {
+            const container = document.getElementById('snitch-container');
+            const snitch = document.createElement('div');
+            snitch.className = 'snitch';
+            snitch.innerHTML = '<span class="wing">🕊️</span><span class="snitch-body">🟠</span><span class="wing">🕊️</span>';
+            container.appendChild(snitch);
+            const startFromLeft = Math.random() > 0.5;
+            const startY = Math.random() * (window.innerHeight * 0.8) + (window.innerHeight * 0.1);
+            if (startFromLeft) { snitch.style.left = '-50px'; } else { snitch.style.right = '-50px'; snitch.style.transform = 'scaleX(-1)'; }
+            snitch.style.top = `${startY}px`;
+            setTimeout(() => {
+                snitch.style.opacity = '1';
+                const duration = 4000;
+                snitch.style.transition = `all ${duration}ms linear, opacity 0.5s ease`;
+                if (startFromLeft) { snitch.style.left = `${window.innerWidth + 50}px`; } else { snitch.style.right = `${window.innerWidth + 50}px`; }
+                setTimeout(() => { snitch.style.opacity = '0'; setTimeout(() => snitch.remove(), 500); }, duration - 500);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
